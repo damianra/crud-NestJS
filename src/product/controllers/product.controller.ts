@@ -10,12 +10,15 @@ import {
   Param,
   Query,
   NotFoundException,
+  UsePipes,
+  ValidationPipe,
 } from '@nestjs/common';
-import { CreateProductDTO } from './dto/product.dto';
-import { ProductService } from './product.service';
-import { Product } from './interfaces/product.interface';
+import { CreateProductDTO } from '../dto/product.dto';
+import { ProductService } from '../services/product.service';
+import { Product } from '../interfaces/product.interface';
 
 @Controller('product')
+@UsePipes(new ValidationPipe())
 export class ProductController {
   constructor(private productService: ProductService) {}
 
